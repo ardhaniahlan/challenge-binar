@@ -83,7 +83,6 @@ public class PemesananMakanan {
                         System.out.println("Pesanan ditambahkan");
                         break;
                     case 99:
-
                         System.out.println("\n================================");
                         System.out.println("Konfirmasi Pembayaran");
                         System.out.println("================================");
@@ -101,25 +100,9 @@ public class PemesananMakanan {
                         pilihan = input.nextInt();
                         if (pilihan == 1) {
                             cetakRiwayatKeFile(history,writer);
-                            System.out.println("\n================================");
-                            System.out.println("BinarFud");
-                            System.out.println("================================");
-
-                            System.out.println("\nTerima kasih sudah memesan \ndi BinarFud");
-
-                            System.out.println("\nDibawah ini adalah pesanan Anda");
-
-                            tampilkanRiwayat(history);
-                            jumlah = hitungPesan(history);
-                            total = hitungTotal(history);
-                            System.out.println("-------------------------------+");
-                            System.out.println("Total         " + jumlah + "    " + total + "00");
-
-                            System.out.println("\nPembayaran : BinarCash");
-
-                            System.out.println("\n================================");
-                            System.out.println("Simpan struk ini sebagai \nbukti pembayaran");
-                            System.out.println("================================");
+                            hitungPesan(history);
+                            hitungTotal(history);
+                            System.out.println("Simpan Struk");
                             break;
                         }
                         else if (pilihan == 2) main(args);
@@ -144,7 +127,24 @@ public class PemesananMakanan {
         try {
             System.out.println("Menyimpan riwayat ke file history.txt...");
             for (String pesanan : history) {
-                writer.write(pesanan + "\n");
+                writer.write("\n================================");
+                writer.write("\nBinarFud");
+                writer.write("\n================================");
+
+                writer.write("\n\nTerima kasih sudah memesan \ndi BinarFud");
+
+                writer.write("\n\nDibawah ini adalah pesanan Anda");
+
+                writer.write("\n\n" + pesanan + "\n");
+                writer.write("-------------------------------+");
+                writer.write("\nTotal         " + hitungPesan(history) + "    " + hitungTotal(history) + "00");
+
+
+                writer.write("\n\nPembayaran : BinarCash");
+
+                writer.write("\n\n================================");
+                writer.write("\nSimpan struk ini sebagai \nbukti pembayaran");
+                writer.write("\n================================");
             }
             System.out.println("Riwayat telah dicetak ke dalam file history.txt.");
         } catch (IOException e) {
