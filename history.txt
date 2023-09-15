@@ -1,0 +1,22 @@
+
+================================
+BinarFud
+================================
+
+Terima kasih sudah memesan 
+di BinarFud
+
+Dibawah ini adalah pesanan Anda
+
+Nasi Goreng   x2   |30.000
+Mie Goreng    x2   |26.000
+Nasi + Ayam   x3   |54.000
+-------------------------------+
+Total         7    110.000
+
+Pembayaran : BinarCash
+
+================================
+Simpan struk ini sebagai 
+bukti pembayaran
+================================

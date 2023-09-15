@@ -99,10 +99,9 @@ public class PemesananMakanan {
                         System.out.print("=> ");
                         pilihan = input.nextInt();
                         if (pilihan == 1) {
-                            cetakRiwayatKeFile(history,writer);
                             hitungPesan(history);
                             hitungTotal(history);
-                            System.out.println("Simpan Struk");
+                            cetakRiwayatKeFile(history,writer);
                             break;
                         }
                         else if (pilihan == 2) main(args);
@@ -125,28 +124,26 @@ public class PemesananMakanan {
 
     public static void cetakRiwayatKeFile(List<String> history, BufferedWriter writer) {
         try {
-            System.out.println("Menyimpan riwayat ke file history.txt...");
+            System.out.println("Simpan Struk ke file history.txt...");
+            writer.write("\n================================");
+            writer.write("\nBinarFud");
+            writer.write("\n================================");
+
+            writer.write("\n\nTerima kasih sudah memesan \ndi BinarFud");
+
+            writer.write("\n\nDibawah ini adalah pesanan Anda\n\n");
+
             for (String pesanan : history) {
-                writer.write("\n================================");
-                writer.write("\nBinarFud");
-                writer.write("\n================================");
-
-                writer.write("\n\nTerima kasih sudah memesan \ndi BinarFud");
-
-                writer.write("\n\nDibawah ini adalah pesanan Anda");
-
-                writer.write("\n\n" + pesanan + "\n");
-                writer.write("-------------------------------+");
-                writer.write("\nTotal         " + hitungPesan(history) + "    " + hitungTotal(history) + "00");
-
-
-                writer.write("\n\nPembayaran : BinarCash");
-
-                writer.write("\n\n================================");
-                writer.write("\nSimpan struk ini sebagai \nbukti pembayaran");
-                writer.write("\n================================");
+                writer.write(pesanan + "\n");
             }
-            System.out.println("Riwayat telah dicetak ke dalam file history.txt.");
+            writer.write("-------------------------------+");
+            writer.write("\nTotal         " + hitungPesan(history) + "    " + hitungTotal(history) + "00");
+
+            writer.write("\n\nPembayaran : BinarCash");
+
+            writer.write("\n\n================================");
+            writer.write("\nSimpan struk ini sebagai \nbukti pembayaran");
+            writer.write("\n================================");
         } catch (IOException e) {
             System.out.println("Gagal mencetak riwayat ke file history.txt.");
         }
