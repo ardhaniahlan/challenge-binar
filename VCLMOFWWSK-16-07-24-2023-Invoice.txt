@@ -1,0 +1,17 @@
+===========================
+BinarFud
+===========================
+Terima kasih sudah memesan
+di BinarFud
+
+Dibawah ini adalah pesanan anda:
+
+Nasi Goreng	4	60000.0
+Mie Goreng	4	52000.0
+-----------------------------+
+Total 	8	112000
+Pembayaran : BinarCash
+===========================
+Simpan struk ini sebagai
+bukti pembayaran
+===========================
