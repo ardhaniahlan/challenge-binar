@@ -1,4 +1,4 @@
-package binarfud_2.model;
+package binarfud_3.model;
 
 public class Menu {
     private final String nama;

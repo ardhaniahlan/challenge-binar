@@ -1,9 +1,10 @@
-package binarfud_2.view;
+package binarfud_3.view;
 
-import binarfud_2.model.Menu;
-import binarfud_2.utils.Utils;
+import binarfud_3.model.Menu;
+import binarfud_3.utils.Utils;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class FoodOrderView {
 
@@ -15,9 +16,8 @@ public class FoodOrderView {
 
     public void printMenu(List<Menu> menu) {
         System.out.println("Silahkan pilih makanan :");
-        for (int i = 0; i < menu.size(); i++) {
-            System.out.println((i + 1) + ". " + menu.get(i).getNama() + Utils.TABLE + menu.get(i).getHarga());
-        }
+        IntStream.range(0, menu.size())
+                .forEach(i -> System.out.println((i + 1) + ". " + menu.get(i).getNama() + Utils.TABLE + menu.get(i).getHarga()));
         System.out.println("99. Pesan dan Bayar");
         System.out.println("0. Keluar Aplikasi");
         System.out.print("=> ");
@@ -28,9 +28,7 @@ public class FoodOrderView {
         System.out.println("Konfirmasi & Pembayaran");
         System.out.println(Utils.SEPARATOR);
 
-        for (Menu menu : order) {
-            System.out.println(menu.getNama() + Utils.TABLE + menu.getJumlah() + Utils.TABLE + menu.getHarga());
-        }
+        order.forEach(menu -> System.out.println(menu.getNama() + Utils.TABLE + menu.getJumlah() + Utils.TABLE + menu.getHarga()));
     }
 
     public void totalAmount(int totalJumlah, double totalHarga) {
@@ -54,7 +52,7 @@ public class FoodOrderView {
         System.out.println("1. Konfirmasi dan Bayar");
         System.out.println("2. Kembali ke menu utama");
         System.out.println("0. Keluar aplikasi");
-        System.out.print("=>");
+        System.out.print("=> ");
     }
 
     public void invoicePayment() {
@@ -71,11 +69,7 @@ public class FoodOrderView {
 
         System.out.println(makanan.getNama() + "\t|\t" + makanan.getHarga());
         System.out.println("(input 0 untuk kembali)");
-        System.out.print("qty =>");
-    }
-
-    public void errorMessage() {
-        System.out.println("=== Pilihan Anda Salah ! ===\n");
+        System.out.print("qty => ");
     }
 
     public void errorInputMessage() {
@@ -84,7 +78,7 @@ public class FoodOrderView {
         System.out.println(Utils.SEPARATOR);
         System.out.println("(Y) untuk lanjut");
         System.out.println("(N) untuk keluar");
-        System.out.print("=>");
+        System.out.print("=> ");
     }
 
     public void errorInputZero() {

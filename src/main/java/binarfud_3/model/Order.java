@@ -1,10 +1,10 @@
-package binarfud_2.model;
+package binarfud_3.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    private List<Menu> items;
+    private final List<Menu> items;
 
     public Order() {
         items = new ArrayList<>();
@@ -19,10 +19,9 @@ public class Order {
     }
 
     public double calculateTotal() {
-        double total = 0;
-        for (Menu item : items) {
-            total += item.getHarga();
-        }
-        return total;
+        return items.stream()
+                .mapToDouble(Menu::getHarga)
+                .sum();
     }
+
 }

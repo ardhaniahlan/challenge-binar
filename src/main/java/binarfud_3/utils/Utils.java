@@ -1,6 +1,7 @@
-package binarfud_2.utils;
+package binarfud_3.utils;
 
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class Utils {
     public static final String SEPARATOR = "===========================";
@@ -13,10 +14,12 @@ public class Utils {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         StringBuilder randomString = new StringBuilder();
 
-        for (int i = 0; i < 10; i++) {
-            int index = random.nextInt(characters.length());
-            randomString.append(characters.charAt(index));
-        }
+        IntStream.range(0, 10)
+                .mapToObj(i -> {
+                    int index = random.nextInt(characters.length());
+                    return characters.charAt(index);
+                })
+                .forEach(randomString::append);
 
         return randomString.toString();
     }

@@ -1,7 +1,7 @@
-package binarfud_2.service;
+package binarfud_3.service;
 
-import binarfud_2.model.Menu;
-import binarfud_2.utils.Utils;
+import binarfud_3.model.Menu;
+import binarfud_3.utils.Utils;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -22,16 +22,23 @@ public class SaveBilling {
             writer.write("Terima kasih sudah memesan\ndi BinarFud\n\n");
             writer.write("Dibawah ini adalah pesanan anda:\n\n");
 
-            for (Menu menu : orderItems) {
-                writer.write(menu.getNama() + "\t" + menu.getJumlah() + "\t" + menu.getHarga() + "\n");
-            }
+            orderItems.stream()
+                    .map(menu -> menu.getNama() + "\t" + menu.getJumlah() + "\t" + menu.getHarga() + "\n")
+                    .forEach(data -> {
+                        try {
+                            writer.write(data);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
 
-            int totalQty = 0;
-            int totalPrice = 0;
-            for (Menu menu : orderItems) {
-                totalQty += menu.getJumlah();
-                totalPrice += menu.getHarga();
-            }
+            int totalQty = orderItems.stream()
+                    .mapToInt(Menu::getJumlah)
+                    .sum();
+            double totalPrice = orderItems.stream()
+                    .mapToDouble(Menu::getHarga)
+                    .sum();
+
             writer.write("-----------------------------+\n");
             writer.write("Total \t" + totalQty + "\t" + totalPrice + "\n");
 
@@ -43,5 +50,6 @@ public class SaveBilling {
             System.out.println("Terjadi kesalahan saat menyimpan pesanan ke dalam file.");
             e.printStackTrace();
         }
+
     }
 }
